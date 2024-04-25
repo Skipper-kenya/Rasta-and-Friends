@@ -21,9 +21,9 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-router.post("/addPost", verifyToken, upload.single("image"), controlAddPost);
-router.get("/getPosts/:id", verifyToken, controlGetPosts);
-router.post("/answerPost", verifyToken, controlAnswerPost);
+router.post("/addPost", upload.single("image"), controlAddPost);
+router.get("/getPosts/:id", controlGetPosts);
+router.post("/answerPost", controlAnswerPost);
 
 const postsRoute = router;
 

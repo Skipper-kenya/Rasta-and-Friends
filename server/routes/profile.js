@@ -28,9 +28,9 @@ router.post(
   upload.single("image"),
   controlUploadProfile
 );
-router.get("/getProfile/:id", verifyToken, controlGetProfile);
-router.post("/updateProfile", verifyToken, controlUpdateProfile);
-router.post("/deleteProfile", verifyToken, controlDeleteProject);
+router.get("/getProfile/:id",  controlGetProfile);
+router.post("/updateProfile",  controlUpdateProfile);
+router.post("/deleteProfile",  controlDeleteProject);
 
 const profileRoute = router;
 

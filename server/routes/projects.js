@@ -22,14 +22,9 @@ const upload = multer({ storage });
 
 const router = Router();
 
-router.post(
-  "/addProject",
-  verifyToken,
-  upload.single("image"),
-  controlAddProject
-);
-router.get("/getProjects/:id", verifyToken, controlGetProjects);
-router.post("/addLike", verifyToken, controlAddLike);
+router.post("/addProject", upload.single("image"), controlAddProject);
+router.get("/getProjects/:id", controlGetProjects);
+router.post("/addLike", controlAddLike);
 
 const projectsRoute = router;
 

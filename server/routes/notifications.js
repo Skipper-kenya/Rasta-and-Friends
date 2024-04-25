@@ -6,9 +6,9 @@ const verifyToken = require("../middleware/verifyToken");
 
 const router = Router();
 
-router.post("/markRead", verifyToken, controlMarkRead);
-router.post("/markAllRead", verifyToken, controlMarkAllRead);
-router.post("/deleteAllRead", verifyToken, controlDeleteAllRead);
+router.post("/markRead", controlMarkRead);
+router.post("/markAllRead", controlMarkAllRead);
+router.post("/deleteAllRead", controlDeleteAllRead);
 
 const notificationsRoute = router;
 
