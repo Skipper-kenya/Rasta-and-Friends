@@ -32,7 +32,7 @@ function App() {
     <div className="main_wrapper">
       <PurgeProvider>
         <CssBaseline />
-        {/* <Spin spinning={loading} fullscreen /> */}
+        <Spin spinning={loading} fullscreen />
         <Toaster richColors position="top-center" />
         <Routes>
           <Route

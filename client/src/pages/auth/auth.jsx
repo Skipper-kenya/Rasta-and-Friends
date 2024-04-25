@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Button, Card, Input, Space } from "antd";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./auth.css";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +16,10 @@ const Auth = ({ name, setStorage }) => {
   const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    dispatch(setLoading(false));
+  }, []);
 
   const isLoginRequest = () => name === "login";
   const isRegisterRequest = () => name === "register";
