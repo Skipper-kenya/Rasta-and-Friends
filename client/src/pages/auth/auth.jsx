@@ -170,13 +170,15 @@ const Auth = ({ name, setStorage }) => {
                 {isLoginRequest() ? (
                   <>
                     <span>
-                      Don't have an account? <a href="/register">Register</a>
+                      Don't have an account?
+                      <a onClick={() => navigate("/register")}>Register</a>
                     </span>
                   </>
                 ) : isRegisterRequest() ? (
                   <>
                     <span>
-                      have an account? <a href="/login">Login</a>
+                      have an account?{" "}
+                      <a onClick={() => navigate("/login")}>Login</a>
                     </span>
                   </>
                 ) : (
