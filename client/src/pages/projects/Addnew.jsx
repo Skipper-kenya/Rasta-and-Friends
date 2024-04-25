@@ -256,7 +256,7 @@ export const CreateModal = ({
                   color="secondary"
                   onClick={handleAddProject}
                 >
-                  Add a skill used
+                  Add another skill
                 </Button>
               </Tooltip>
             </Stack>

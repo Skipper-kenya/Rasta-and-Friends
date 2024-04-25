@@ -24,7 +24,6 @@ const router = Router();
 
 router.post(
   "/uploadProfile",
-  verifyToken,
   upload.single("image"),
   controlUploadProfile
 );

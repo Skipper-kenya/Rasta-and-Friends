@@ -104,7 +104,7 @@ const Projects = () => {
     <Box component="main" sx={{ flexGrow: 1, p: 2 }}>
       {/* Add new project */}
       <Addnew open={open} setOpen={setOpen} />
-      {viewportWidth <= 767 && <Toolbar sx={{ flexGrow: 1 }} />}
+      <Toolbar sx={{ flexGrow: 1 }} />
       {/* All Projects */}
       <Masonry
         breakpointCols={breakpoints}

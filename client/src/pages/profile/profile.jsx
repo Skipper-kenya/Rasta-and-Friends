@@ -203,7 +203,7 @@ const Profile = () => {
                 size="small"
                 onClick={handleAddSkillField}
               >
-                Add a Skill
+                Add another skill
               </Button>
             </Stack>
 
