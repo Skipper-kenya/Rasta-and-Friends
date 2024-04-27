@@ -17,9 +17,6 @@ const Auth = ({ name, setStorage }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  useEffect(() => {
-    dispatch(setLoading(false));
-  }, []);
 
   const isLoginRequest = () => name === "login";
   const isRegisterRequest = () => name === "register";

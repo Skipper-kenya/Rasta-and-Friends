@@ -26,13 +26,14 @@ const darkTheme = createTheme({
 
 function App() {
   axios.defaults.withCredentials = true;
+
   const loading = useSelector((state) => state.loading.loading);
 
   return (
     <div className="main_wrapper">
       <PurgeProvider>
         <CssBaseline />
-        <Spin spinning={loading} fullscreen />
+        {/* <Spin spinning={loading} fullscreen /> */}
         <Toaster richColors position="top-center" />
         <Routes>
           <Route

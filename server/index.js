@@ -24,6 +24,7 @@ app.use(
     credentials: true,
   })
 );
+
 app.use(express.json());
 app.use(
   session({
