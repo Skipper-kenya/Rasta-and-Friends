@@ -11,12 +11,12 @@ import { Box, Container, Divider, Stack, Typography } from "@mui/material";
 import { purgeContext } from "../../context/purge";
 
 const Auth = ({ name, setStorage }) => {
+  axios.defaults.withCredentials = true;
   const { viewportWidth } = useContext(purgeContext);
   axios.defaults.withCredentials = true;
   const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
 
   const isLoginRequest = () => name === "login";
   const isRegisterRequest = () => name === "register";
