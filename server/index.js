@@ -37,7 +37,7 @@ app.use(
     }),
     cookie: {
       sameSite: "none",
-      domain: process.env.CLIENT_URI,
+      // domain: process.env.CLIENT_URI,
       secure: true,
       path: "/",
       maxAge: 3600000, //1hr
