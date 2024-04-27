@@ -35,6 +35,8 @@ app.use(
       uri: process.env.MONGO_URI,
     }),
     cookie: {
+      sameSite: "none",
+      domain: process.env.CLIENT_URI,
       // httpOnly: true,
       secure: true,
       maxAge: 3600000, //1hr
