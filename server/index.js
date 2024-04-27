@@ -26,10 +26,7 @@ app.use(
 );
 
 app.use(express.json());
-app.use((req, res, next) => {
-  res.header('Access-Control-Expose-Headers', 'Set-Cookie');
-  next();
-});
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
