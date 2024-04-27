@@ -27,6 +27,10 @@ app.use(
 
 app.use(express.json());
 
+app.use((req, res, next) => {
+  res.set("Set-Cookie", "SameSite=None; Secure"); // Set SameSite to None and require secure connection
+  next();
+});
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -37,7 +41,7 @@ app.use(
     }),
     cookie: {
       sameSite: "none",
-      // domain: process.env.CLIENT_URI,
+      domain: process.env.CLIENT_URI,
       secure: true,
       path: "/",
       maxAge: 3600000, //1hr
