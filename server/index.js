@@ -31,8 +31,8 @@ app.use(express.json());
 //   res.set("Set-Cookie", "SameSite=None; Secure"); // Set SameSite to None and require secure connection
 //   next();
 // });
-if (process.env.NODE_ENV === 'production') {
-  app.set('trust proxy', 1) 
+if (process.env.NODE_ENV === "production") {
+  app.set("trust proxy", 1);
 }
 app.use(
   session({
@@ -43,8 +43,6 @@ app.use(
       uri: process.env.MONGO_URI,
     }),
     cookie: {
-      // sameSite: "none",
-      // domain: process.env.CLIENT_URI,
       secure: true,
       maxAge: 3600000, //1hr
     },
