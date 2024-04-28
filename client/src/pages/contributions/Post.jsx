@@ -110,6 +110,7 @@ const Post = () => {
               image={`${import.meta.env.VITE_API_SERVER}/postsImages/${
                 currentPost[0]?.filename
               }`}
+              crossOrigin="anonymous"
               alt={currentPost[0]?.filename}
             />
           </Card>
