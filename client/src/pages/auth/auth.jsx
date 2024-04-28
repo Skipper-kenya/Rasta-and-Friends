@@ -53,7 +53,7 @@ const Auth = ({ name, setStorage }) => {
       const { message, user, success, isAuthenticated } = response.data;
       dispatch(getUser(isAuthenticated));
       dispatch(updateDetails(user));
-      !success ? toast.error(message) : toast.success(message);
+      !success ? toast.error(message) : null;
       success ? navigate("/", { replace: true }) : null;
       success
         ? (() => {
