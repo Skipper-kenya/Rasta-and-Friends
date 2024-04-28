@@ -19,7 +19,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Delete, Edit } from "@mui/icons-material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import EditProfile from "./EditProfile";
 import axios from "axios";
 import { toast } from "sonner";
@@ -185,6 +185,7 @@ const CreateCard = ({ title, subheader, content, image, handleEdit }) => {
             <Grid item>
               <Avatar
                 sx={{ height: 100, width: 100, backgroundSize: "cover" }}
+                crossOrigin="anonymous"
                 src={`${
                   import.meta.env.VITE_API_SERVER
                 }/profileimages/${image}`}
