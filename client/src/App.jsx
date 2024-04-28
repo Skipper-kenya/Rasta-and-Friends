@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { Spin } from "antd";
 import { CssBaseline, createTheme } from "@mui/material";
 import PurgeProvider from "./context/purge.jsx";
+import NotFound from "./components/NotFound.jsx";
 
 const LazyProfile = React.lazy(() => import("./pages/profile/profile.jsx"));
 const LazyContributions = React.lazy(() =>
@@ -87,8 +88,10 @@ function App() {
               </ProtectedRoute>
             }
           />
+
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </PurgeProvider>
     </div>
