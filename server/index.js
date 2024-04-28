@@ -27,7 +27,6 @@ app.use(
 
 app.use(express.json());
 
-
 if (process.env.NODE_ENV === "production") {
   app.set("trust proxy", 1);
 }
@@ -41,6 +40,7 @@ app.use(
     }),
     cookie: {
       secure: true,
+      // httpOnly: true,
       maxAge: 3600000, //1hr
     },
   })

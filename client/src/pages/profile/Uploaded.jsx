@@ -183,13 +183,14 @@ const CreateCard = ({ title, subheader, content, image, handleEdit }) => {
             }}
           >
             <Grid item>
-              <Avatar
-                sx={{ height: 100, width: 100, backgroundSize: "cover" }}
-                crossOrigin="anonymous"
-                src={`${
-                  import.meta.env.VITE_API_SERVER
-                }/profileimages/${image}`}
-              />
+              <Avatar sx={{ height: 100, width: 100, backgroundSize: "cover" }}>
+                <img
+                  crossOrigin="anonymous"
+                  src={`${
+                    import.meta.env.VITE_API_SERVER
+                  }/profileimages/${image}`}
+                />
+              </Avatar>
             </Grid>
           </Grid>
         ) : (
