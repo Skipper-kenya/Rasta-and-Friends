@@ -40,10 +40,13 @@ const Uploaded = ({ _id, img, userProfile }) => {
   const getProfilePic = async () => {
     const response = await axios.get(
       `${import.meta.env.VITE_API_GETPROFILEPIC}/${userProfile._id}`,
-      { responseType: "arraybuffer" }
+      { responseType: "blob" }
     );
-    setUrl(response.config.url);
-    console.log(url);
+
+    const blob = new Blob([response.data], { type: "image/jpeg" });
+    const imageUrl = URL.createObjectURL(blob);
+
+    setUrl(imageUrl);
   };
 
   useEffect(() => {
