@@ -199,7 +199,7 @@ const CreateCard = ({ title, subheader, content, image, handleEdit }) => {
               <Avatar sx={{ height: 100, width: 100, backgroundSize: "cover" }}>
                 <img
                   // crossOrigin="anonymous"
-                  src={`https://cors-anywhere.herokuapp.com/${
+                  src={`${
                     import.meta.env.VITE_API_SERVER
                   }/profileimages/${image}`}
                 />
