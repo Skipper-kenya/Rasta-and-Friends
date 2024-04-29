@@ -35,18 +35,19 @@ const Uploaded = ({ _id, img, userProfile }) => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [editContent, setEditContent] = useState("");
+  const [url, setUrl] = useState(null);
 
-  // const getProfilePic = async () => {
-  //   const response = await axios.get(
-  //     `${import.meta.env.VITE_API_GETPROFILEPIC}/${userProfile._id}`
-  //   );
+  const getProfilePic = async () => {
+    const response = await axios.get(
+      `${import.meta.env.VITE_API_GETPROFILEPIC}/${userProfile._id}`,
+      { responseType: "arraybuffer" }
+    );
+    setUrl(response.config.url);
+  };
 
-  //   console.log(response.data);
-  // };
-
-  // useEffect(() => {
-  //   getProfilePic();
-  // }, []);
+  useEffect(() => {
+    getProfilePic();
+  }, []);
 
   const handleEdit = async (title) => {
     try {
@@ -131,6 +132,7 @@ const Uploaded = ({ _id, img, userProfile }) => {
             title="image"
             subheader="Your profile image"
             content={userProfile.name}
+            url={url}
             image={img}
             handleEdit={handleEdit}
           />
@@ -164,7 +166,7 @@ const Uploaded = ({ _id, img, userProfile }) => {
   );
 };
 
-const CreateCard = ({ title, subheader, content, image, handleEdit }) => {
+const CreateCard = ({ title, subheader, content, image, handleEdit, url }) => {
   return (
     <div>
       <Card>
@@ -198,10 +200,10 @@ const CreateCard = ({ title, subheader, content, image, handleEdit }) => {
             <Grid item>
               <Avatar sx={{ height: 100, width: 100, backgroundSize: "cover" }}>
                 <img
-                  // crossOrigin="anonymous"
-                  src={`${
-                    import.meta.env.VITE_API_SERVER
-                  }/profileimages/${image}`}
+                  src={url}
+                  // src={`${
+                  //   import.meta.env.VITE_API_SERVER
+                  // }/profileimages/${image}`}
                 />
               </Avatar>
             </Grid>
