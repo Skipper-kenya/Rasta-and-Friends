@@ -14,7 +14,6 @@ import { updateProfile } from "../../redux/user";
 import Uploaded from "./Uploaded";
 import { hideLoading, setLoading } from "../../redux/loading";
 const Profile = () => {
-
   const [img, setImg] = useState("");
   const dispatch = useDispatch();
   const _id = useSelector((state) => state.user.details?._id);

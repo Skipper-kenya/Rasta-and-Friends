@@ -39,7 +39,7 @@ const Uploaded = ({ _id, img, userProfile }) => {
   //
   const getProfilePic = async () => {
     const response = await axios.get(
-      `${import.meta.env.VITE_API_GETPROFILEPIC}/${userProfile._id}`,
+      `https://cors-anywhere.herokuapp.com/${import.meta.env.VITE_API_GETPROFILEPIC}/${userProfile._id}`,
       { responseType: "arraybuffer" }
     );
 
