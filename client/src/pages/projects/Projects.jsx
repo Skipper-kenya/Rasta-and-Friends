@@ -135,7 +135,7 @@ const Projects = () => {
                   image={`${import.meta.env.VITE_API_SERVER}/projectImages/${
                     project.projectImage[0]?.name
                   }`}
-                  crossOrigin="anonymous"
+                  // crossOrigin="anonymous"
                   alt={project.projectName}
                 />
                 <CardContent>

@@ -23,7 +23,7 @@ import React, { useEffect, useState } from "react";
 import EditProfile from "./EditProfile";
 import axios from "axios";
 import { toast } from "sonner";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateProfile } from "../../redux/user";
 import { hideLoading, setLoading } from "../../redux/loading";
 import { breakpoints } from "../../components/breakpoints";
@@ -35,6 +35,19 @@ const Uploaded = ({ _id, img, userProfile }) => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [editContent, setEditContent] = useState("");
+
+  // const getProfilePic = async () => {
+  //   const response = await axios.get(
+  //     `${import.meta.env.VITE_API_GETPROFILEPIC}/${userProfile._id}`
+  //   );
+
+  //   console.log(response.data);
+  // };
+
+  // useEffect(() => {
+  //   getProfilePic();
+  // }, []);
+
   const handleEdit = async (title) => {
     try {
       setEditContent(userProfile[title]);
@@ -185,8 +198,8 @@ const CreateCard = ({ title, subheader, content, image, handleEdit }) => {
             <Grid item>
               <Avatar sx={{ height: 100, width: 100, backgroundSize: "cover" }}>
                 <img
-                  crossOrigin="anonymous"
-                  src={`${
+                  // crossOrigin="anonymous"
+                  src={`https://cors-anywhere.herokuapp.com/${
                     import.meta.env.VITE_API_SERVER
                   }/profileimages/${image}`}
                 />
