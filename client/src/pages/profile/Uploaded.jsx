@@ -36,13 +36,14 @@ const Uploaded = ({ _id, img, userProfile }) => {
   const [title, setTitle] = useState("");
   const [editContent, setEditContent] = useState("");
   const [url, setUrl] = useState(null);
-//
+  //
   const getProfilePic = async () => {
     const response = await axios.get(
       `${import.meta.env.VITE_API_GETPROFILEPIC}/${userProfile._id}`,
       { responseType: "arraybuffer" }
     );
     setUrl(response.config.url);
+    console.log(url);
   };
 
   useEffect(() => {
