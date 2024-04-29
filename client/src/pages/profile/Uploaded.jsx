@@ -30,6 +30,7 @@ import { breakpoints } from "../../components/breakpoints";
 import Masonry from "react-masonry-css";
 
 const Uploaded = ({ _id, img, userProfile }) => {
+  axios.defaults.withCredentials = true;
   const dispatch = useDispatch();
   const [modalOpen, setModalOpen] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -39,7 +40,7 @@ const Uploaded = ({ _id, img, userProfile }) => {
   //
   const getProfilePic = async () => {
     const response = await axios.get(
-      `https://cors-anywhere.herokuapp.com/${import.meta.env.VITE_API_GETPROFILEPIC}/${userProfile._id}`,
+      `${import.meta.env.VITE_API_GETPROFILEPIC}/${userProfile._id}`,
       { responseType: "arraybuffer" }
     );
 
