@@ -10,7 +10,7 @@ const controlGetProfilePic = require("../controller/profile/get_profile_pic");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    return cb(null, "public/profileimages");
+    return cb(null, "controller/profile/uploads/");
   },
   filename: (req, file, cb) => {
     return cb(null, Date.now() + path.extname(file.originalname));

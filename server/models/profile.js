@@ -20,12 +20,12 @@ const profileSchema = new mongoose.Schema(
         required: true,
       },
     ],
-    image: [
-      {
-        type: mongoose.Schema.Types.Mixed,
-        required: true,
-      },
-    ],
+    image: {
+      data: Buffer,
+      name: String,
+      ContentType: String,
+    },
+
     profileOwner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "users",

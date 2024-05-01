@@ -40,16 +40,19 @@ const Uploaded = ({ _id, img, userProfile }) => {
   //
   const getProfilePic = async () => {
     const response = await axios.get(
-      `${import.meta.env.VITE_API_GETPROFILEPIC}/${userProfile._id}`,
-      { responseType: "arraybuffer" }
+      `${import.meta.env.VITE_API_GETPROFILEPIC}/${userProfile._id}`
+      // {
+      //   responseType: "arraybuffer",
+      // }
     );
-
-    const blob = new Blob([response.data], { type: "image/jpeg" });
+    const { data } = response.data;
+    const imageData = [...data.data];
+    const uint8Array = new Uint8Array(imageData);
+    const blob = new Blob([uint8Array], { type: "image/jpeg" });
     const imageUrl = URL.createObjectURL(blob);
 
     setUrl(imageUrl);
   };
-
   useEffect(() => {
     getProfilePic();
   }, []);
@@ -206,6 +209,7 @@ const CreateCard = ({ title, subheader, content, image, handleEdit, url }) => {
               <Avatar sx={{ height: 100, width: 100, backgroundSize: "cover" }}>
                 <img
                   src={url}
+                  // src={url}
                   // src={`${
                   //   import.meta.env.VITE_API_SERVER
                   // }/profileimages/${image}`}

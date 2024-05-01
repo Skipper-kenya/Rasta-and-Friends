@@ -1,14 +1,16 @@
 const profileModel = require("../../models/profile.js");
-
+const fs = require("fs");
+const path = require("path");
 const controlUploadProfile = async (req, res) => {
   const { firstName, secondName, _id } = req.body.details;
-  const profileImage = [
-    {
-      name: req.file.filename,
-      path: req.file.path,
-    },
-  ];
 
+  const profileImage = {
+    data: fs.readFileSync(
+      path.join(__dirname + "/uploads/" + req.file.filename)
+    ),
+    name: req.file.filename,
+    ContentType: req.file.mimetype,
+  };
   try {
     const newProfile = new profileModel({
       ...req.body.details,

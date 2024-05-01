@@ -27,7 +27,7 @@ const Profile = () => {
       );
       const { profile } = response.data;
       dispatch(updateProfile(profile));
-      setImg(userProfile.image[0].name);
+      // setImg(userProfile.image[0].name);
 
       dispatch(hideLoading());
     } catch (error) {
