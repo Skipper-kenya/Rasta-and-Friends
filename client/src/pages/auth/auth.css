@@ -1,6 +1,7 @@
 .auth_holder {
   display: flex;
   position: relative;
+  flex-direction: column;
   z-index: 500;
   justify-content: flex-start;
   width: 100%;
