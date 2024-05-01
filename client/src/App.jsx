@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/home/dashboard";
@@ -19,12 +19,6 @@ const LazyContributions = React.lazy(() =>
 const LazyProjects = React.lazy(() => import("./pages/projects/Projects.jsx"));
 const LazyPost = React.lazy(() => import("./pages/contributions/Post.jsx"));
 
-const darkTheme = createTheme({
-  palette: {
-    mode: "dark",
-  },
-});
-
 function App() {
   axios.defaults.withCredentials = true;
 
@@ -34,8 +28,8 @@ function App() {
     <div className="main_wrapper">
       <PurgeProvider>
         <CssBaseline />
-        {/* <Spin spinning={loading} fullscreen /> */}
         <Toaster richColors position="top-center" />
+        <Spin spinning={loading} fullscreen />
         <Routes>
           <Route
             path="/"
