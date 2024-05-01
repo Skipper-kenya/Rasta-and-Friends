@@ -3,6 +3,10 @@ import axios from "axios";
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/home/dashboard";
 import Register from "./pages/auth/Register";
+import Profile from "./pages/profile/profile.jsx";
+import Contributions from "./pages/contributions/contributions.jsx";
+import Post from "./pages/contributions/Post.jsx";
+import Projects from "./pages/projects/Projects.jsx";
 import Login from "./pages/auth/Login";
 import { Toaster } from "sonner";
 import ProtectedRoute from "./components/secure/protectedRoute.jsx";
@@ -50,9 +54,10 @@ function App() {
             path="/profile"
             element={
               <ProtectedRoute>
-                <React.Suspense fallback={<Spin fullscreen />}>
+                <Profile />
+                {/* <React.Suspense fallback={<Spin fullscreen />}>
                   <LazyProfile />
-                </React.Suspense>
+                </React.Suspense> */}
               </ProtectedRoute>
             }
           />
@@ -61,9 +66,10 @@ function App() {
             path="/projects"
             element={
               <ProtectedRoute>
-                <React.Suspense fallback={<Spin fullscreen />}>
+                <Projects />
+                {/* <React.Suspense fallback={<Spin fullscreen />}>
                   <LazyProjects />
-                </React.Suspense>
+                </React.Suspense> */}
               </ProtectedRoute>
             }
           />
@@ -72,9 +78,10 @@ function App() {
             path="/contributions"
             element={
               <ProtectedRoute>
-                <React.Suspense fallback={<Spin fullscreen />}>
+                <Contributions />
+                {/* <React.Suspense fallback={<Spin fullscreen />}>
                   <LazyContributions />
-                </React.Suspense>
+                </React.Suspense> */}
               </ProtectedRoute>
             }
           />
@@ -82,9 +89,10 @@ function App() {
             path="/post/:id"
             element={
               <ProtectedRoute>
-                <React.Suspense fallback={<Spin fullscreen />}>
+                <Post />
+                {/* <React.Suspense fallback={<Spin fullscreen />}>
                   <LazyPost />
-                </React.Suspense>
+                </React.Suspense> */}
               </ProtectedRoute>
             }
           />
