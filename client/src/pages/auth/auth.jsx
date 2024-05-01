@@ -126,23 +126,29 @@ const Auth = ({ name, setStorage }) => {
           </Container>
         </Box>
       )}
-      <Toolbar>
-        <Stack
-          direction="column"
-          alignItems="center"
-          spacing={1}
-          sx={{ justifyContent: "center", width: "100%" }}
-        >
-          <Typography variant="h6" sx={{ color: "white", textAlign: "center" }}>
-            Welcome to Rasta & Friends
-          </Typography>
-          <Typography
-            sx={{ color: "white", textAlign: "center", fontStyle: "italic" }}
+
+      {viewportWidth <= 767 && (
+        <Toolbar>
+          <Stack
+            direction="column"
+            alignItems="center"
+            spacing={1}
+            sx={{ justifyContent: "center", width: "100%" }}
           >
-            join this transformative developer's community today
-          </Typography>
-        </Stack>
-      </Toolbar>
+            <Typography
+              variant="h6"
+              sx={{ color: "white", textAlign: "center" }}
+            >
+              Welcome to Rasta & Friends
+            </Typography>
+            <Typography
+              sx={{ color: "white", textAlign: "center", fontStyle: "italic" }}
+            >
+              join this transformative developer's community today
+            </Typography>
+          </Stack>
+        </Toolbar>
+      )}
 
       <Box>
         <div
