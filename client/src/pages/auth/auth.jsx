@@ -48,11 +48,13 @@ const Auth = ({ name, setStorage }) => {
         username,
         password,
       });
-      dispatch(hideLoading());
 
       const { message, user, success, isAuthenticated } = response.data;
       dispatch(getUser(isAuthenticated));
       dispatch(updateDetails(user));
+
+      dispatch(hideLoading());
+
       !success ? toast.error(message) : null;
       success ? navigate("/", { replace: true }) : null;
       success
