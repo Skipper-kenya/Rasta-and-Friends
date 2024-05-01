@@ -12,7 +12,7 @@ const controlAnswerPost = require("../controller/post/answer_post");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    return cb(null, "public/postsImages");
+    return cb(null, "controller/post/uploads/");
   },
   filename: (req, file, cb) => {
     return cb(null, Date.now() + path.extname(file?.originalname));

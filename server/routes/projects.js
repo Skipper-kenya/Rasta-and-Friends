@@ -11,7 +11,7 @@ const verifyToken = require("../middleware/verifyToken");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    return cb(null, "public/projectImages");
+    return cb(null, "controller/projects/uploads/");
   },
   filename: (req, file, cb) => {
     return cb(null, Date.now() + path.extname(file.originalname));

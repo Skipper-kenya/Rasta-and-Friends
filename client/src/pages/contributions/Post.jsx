@@ -13,7 +13,7 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
@@ -33,7 +33,20 @@ const Post = () => {
   const [answer, setAnswer] = useState("");
   const params = useParams();
   const details = useSelector((state) => state.user.details);
+
+  const [url, setUrl] = useState(null);
+
   const currentPost = posts?.filter((post) => post._id === params?.id);
+
+  useEffect(() => {
+    const dat = currentPost[0].image.data.data;
+    const imageData = [...dat];
+    const uint8Array = new Uint8Array(imageData);
+    const blob = new Blob([uint8Array], { type: "image/jpeg" });
+    const imageUrl = URL.createObjectURL(blob);
+    setUrl(imageUrl);
+  }, []);
+
 
   const handleSubmitAnswer = async () => {
     if (answer) {
@@ -99,7 +112,7 @@ const Post = () => {
           {currentPost[0]?.question}?
         </Typography>
 
-        {currentPost[0]?.filename && (
+        {url && (
           <Card>
             <CardHeader subheader="Supporting image" />
             <CardMedia
@@ -107,9 +120,7 @@ const Post = () => {
               component="img"
               height="350px"
               width="350px"
-              image={`${import.meta.env.VITE_API_SERVER}/postsImages/${
-                currentPost[0]?.filename
-              }`}
+              image={url}
               crossOrigin="anonymous"
               alt={currentPost[0]?.filename}
             />

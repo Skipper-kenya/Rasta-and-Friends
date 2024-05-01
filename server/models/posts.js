@@ -14,8 +14,10 @@ const postsSchema = new mongoose.Schema(
       type: String,
       default: "public",
     },
-    filename: {
-      type: String,
+    image: {
+      name: String,
+      data: Buffer,
+      ContentType: String,
     },
     postOwner: {
       type: mongoose.Schema.Types.ObjectId,

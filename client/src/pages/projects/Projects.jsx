@@ -112,6 +112,12 @@ const Projects = () => {
         columnClassName="my-masonry-grid_column"
       >
         {projects?.map((project) => {
+          const data = project.projectImage.data;
+          const arr = [...data.data];
+          const uint8Array = new Uint8Array(arr);
+          const blob = new Blob([uint8Array], { type: "image/jpeg" });
+          const imageUrl = URL.createObjectURL(blob);
+
           return (
             <div item key={project._id}>
               <Card>
@@ -132,9 +138,7 @@ const Projects = () => {
                 <CardMedia
                   component="img"
                   height="194"
-                  image={`${import.meta.env.VITE_API_SERVER}/projectImages/${
-                    project.projectImage[0]?.name
-                  }`}
+                  image={imageUrl}
                   alt={project.projectName}
                 />
                 <CardContent>

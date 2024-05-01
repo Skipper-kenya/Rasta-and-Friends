@@ -32,12 +32,12 @@ const projectsSchema = new mongoose.Schema(
         required: true,
       },
     ],
-    projectImage: [
-      {
-        type: mongoose.Schema.Types.Mixed,
-        required: true,
-      },
-    ],
+    projectImage: {
+      data: Buffer,
+      name: String,
+      ContentType: String,
+    },
+
     username: {
       type: String,
       required: true,

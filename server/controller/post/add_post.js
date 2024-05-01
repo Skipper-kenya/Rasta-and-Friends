@@ -1,9 +1,18 @@
 const postsModel = require("../../models/posts");
+const path = require("path");
+const fs = require("fs");
 
 const controlAddPost = async (req, res) => {
   const { postDetails, postOwner, postUsername } = req.body;
 
-  const filename = req.file?.filename || null;
+  const filename = req.file?.filename;
+
+  const image = {
+    name: filename,
+    data: fs.readFileSync(path.join(__dirname + "/uploads/" + filename)),
+    ContentType: req.file?.mimetype,
+  };
+
   const privaccy = postDetails.privacy;
 
   try {
@@ -12,7 +21,7 @@ const controlAddPost = async (req, res) => {
       privacy: !privaccy ? "public" : privaccy,
       postOwner,
       postUsername,
-      filename,
+      image,
     });
     await newPost.save();
 
