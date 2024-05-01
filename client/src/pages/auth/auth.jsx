@@ -91,7 +91,10 @@ const Auth = ({ name, setStorage }) => {
   };
 
   return (
-    <div className="auth_holder">
+    <div
+      className="auth_holder"
+      sx={{ flexDirection: viewportWidth <= 767 ? "column" : "row" }}
+    >
       {viewportWidth <= 767 && <div className="left_wrapper"></div>}
 
       {viewportWidth > 767 && (
