@@ -10,11 +10,12 @@ import {
   IconButton,
 } from "@mui/material";
 import axios from "axios";
-import React from "react";
+import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { hideLoading, setLoading } from "../../redux/loading";
 import { toast } from "sonner";
 import { updateProfile } from "../../redux/user";
+import { purgeContext } from "../../context/purge";
 
 const EditProfile = ({
   editContent,
@@ -23,6 +24,7 @@ const EditProfile = ({
   modalOpen,
   setModalOpen,
 }) => {
+  const { viewportWidth } = useContext(purgeContext);
 
   const dispatch = useDispatch();
   const _id = useSelector((state) => state.user.details?._id);
@@ -56,10 +58,10 @@ const EditProfile = ({
     <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
       <Box
         sx={{
-          width: 400,
+          width: viewportWidth <= 767 ? "90%" : "400px",
           position: "absolute",
           top: "30%",
-          left: "30%",
+          left: viewportWidth <= 767 ? "5%" : "30%",
           background: "white",
           padding: 2,
           outline: 0,

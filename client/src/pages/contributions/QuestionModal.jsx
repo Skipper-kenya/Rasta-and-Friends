@@ -13,7 +13,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Cancel, PhotoCamera } from "@mui/icons-material";
 import { useRef } from "react";
 import axios from "axios";
@@ -22,8 +22,10 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { setLoading, hideLoading } from "../../redux/loading";
 import { updatePosts } from "../../redux/posts";
+import { purgeContext } from "../../context/purge";
 
 const QuestionModal = ({ modalOpen, setModalOpen }) => {
+  const { viewportWidth } = useContext(purgeContext);
   const details = useSelector((state) => state.user.details);
   const dispatch = useDispatch();
   const fileInputRef = useRef(null);
@@ -111,10 +113,10 @@ const QuestionModal = ({ modalOpen, setModalOpen }) => {
       <Box
         sx={{
           position: "absolute",
-          top: "10%",
-          left: "35%",
+          top: viewportWidth <= 767 ? "0%" : "10%",
+          left: viewportWidth <= 767 ? "5%" : "35%",
           background: "white",
-          width: 500,
+          width: viewportWidth <= 767 ? "90%" : " 500px",
           height: 450,
           overflow: "scroll",
           padding: "10px",
