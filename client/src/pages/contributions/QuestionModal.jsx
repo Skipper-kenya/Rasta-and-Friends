@@ -118,7 +118,7 @@ const QuestionModal = ({ modalOpen, setModalOpen }) => {
           left: viewportWidth <= 767 ? "5%" : "35%",
           background: "white",
           width: viewportWidth <= 767 ? "90%" : " 500px",
-          height: 450,
+          height: viewportWidth <= 767 ? "95vh" : " 450px",
           overflow: "scroll",
           padding: "10px",
         }}
