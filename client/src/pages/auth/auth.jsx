@@ -93,7 +93,10 @@ const Auth = ({ name, setStorage }) => {
   return (
     <div
       className="auth_holder"
-      sx={{ flexDirection: viewportWidth <= 767 ? "column" : "row" }}
+      sx={{
+        display: "flex",
+        flexDirection: viewportWidth <= 767 ? "column" : "row",
+      }}
     >
       {viewportWidth <= 767 && <div className="left_wrapper"></div>}
 
@@ -130,105 +133,111 @@ const Auth = ({ name, setStorage }) => {
         </Box>
       )}
 
-      {viewportWidth <= 767 && (
-        <Toolbar>
-          <Stack
-            direction="column"
-            alignItems="center"
-            spacing={1}
-            sx={{ justifyContent: "center", width: "100%" }}
-          >
-            <Typography
-              variant="h6"
-              sx={{ color: "white", textAlign: "center" }}
+      <Stack direction={viewportWidth <= 767 ? "column" : "row"}>
+        {viewportWidth <= 767 && (
+          <Toolbar>
+            <Stack
+              direction="column"
+              alignItems="center"
+              spacing={1}
+              sx={{ justifyContent: "center", width: "100%" }}
             >
-              Welcome to Rasta & Friends
-            </Typography>
-            <Typography
-              sx={{ color: "white", textAlign: "center", fontStyle: "italic" }}
-            >
-              join this transformative developer's community today
-            </Typography>
-          </Stack>
-        </Toolbar>
-      )}
+              <Typography
+                variant="h6"
+                sx={{ color: "white", textAlign: "center" }}
+              >
+                Welcome to Rasta & Friends
+              </Typography>
+              <Typography
+                sx={{
+                  color: "white",
+                  textAlign: "center",
+                  fontStyle: "italic",
+                }}
+              >
+                join this transformative developer's community today
+              </Typography>
+            </Stack>
+          </Toolbar>
+        )}
 
-      <Box>
-        <div
-          className="cardHolder"
-          style={{
-            minHeight: viewportWidth <= 767 ? "50vh" : " 500px",
-            paddingTop: viewportWidth <= 767 ? "2rem" : "4rem",
-            marginRight: viewportWidth <= 767 ? "8rem" : "4rem",
-          }}
-        >
-          <Card
-            className="card"
-            title={name.toUpperCase()}
-            style={{ width: "300px" }}
-            bordered
+        <Box>
+          <div
+            className="cardHolder"
+            style={{
+              minHeight: viewportWidth <= 767 ? "50vh" : " 500px",
+              paddingTop: viewportWidth <= 767 ? "2rem" : "4rem",
+              marginRight: viewportWidth <= 767 ? "8rem" : "4rem",
+            }}
           >
-            <Space direction="vertical">
-              <section>
-                <label htmlFor="username">Username</label>
-                <Input
-                  allowClear
-                  type="text"
-                  placeholder="username"
-                  size="large"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </section>
-              <section>
-                <label htmlFor="username">Password</label>
-                <Input.Password
-                  type="password"
-                  placeholder="password"
-                  size="large"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </section>
-              <section>
-                <Button
-                  className="btn"
-                  type="primary"
-                  block
-                  size="large"
-                  onClick={handleSubmit}
-                  loading={loading}
-                >
-                  {isRegisterRequest()
-                    ? "Sign up"
-                    : isLoginRequest()
-                    ? "Sign in"
-                    : ""}
-                </Button>
-              </section>
-              <section>
-                {isLoginRequest() ? (
-                  <>
-                    <span>
-                      Don't have an account?
-                      <a onClick={() => navigate("/register")}>Register</a>
-                    </span>
-                  </>
-                ) : isRegisterRequest() ? (
-                  <>
-                    <span>
-                      have an account?{" "}
-                      <a onClick={() => navigate("/login")}>Login</a>
-                    </span>
-                  </>
-                ) : (
-                  ""
-                )}
-              </section>
-            </Space>
-          </Card>
-        </div>
-      </Box>
+            <Card
+              className="card"
+              title={name.toUpperCase()}
+              style={{ width: "300px" }}
+              bordered
+            >
+              <Space direction="vertical">
+                <section>
+                  <label htmlFor="username">Username</label>
+                  <Input
+                    allowClear
+                    type="text"
+                    placeholder="username"
+                    size="large"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </section>
+                <section>
+                  <label htmlFor="username">Password</label>
+                  <Input.Password
+                    type="password"
+                    placeholder="password"
+                    size="large"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </section>
+                <section>
+                  <Button
+                    className="btn"
+                    type="primary"
+                    block
+                    size="large"
+                    onClick={handleSubmit}
+                    loading={loading}
+                  >
+                    {isRegisterRequest()
+                      ? "Sign up"
+                      : isLoginRequest()
+                      ? "Sign in"
+                      : ""}
+                  </Button>
+                </section>
+                <section>
+                  {isLoginRequest() ? (
+                    <>
+                      <span>
+                        Don't have an account?
+                        <a onClick={() => navigate("/register")}>Register</a>
+                      </span>
+                    </>
+                  ) : isRegisterRequest() ? (
+                    <>
+                      <span>
+                        have an account?{" "}
+                        <a onClick={() => navigate("/login")}>Login</a>
+                      </span>
+                    </>
+                  ) : (
+                    ""
+                  )}
+                </section>
+              </Space>
+            </Card>
+          </div>
+        </Box>
+      </Stack>
     </div>
   );
 };

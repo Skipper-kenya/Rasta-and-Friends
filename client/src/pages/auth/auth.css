@@ -1,5 +1,6 @@
 .auth_holder {
   display: flex;
+  /* flex-direction: column; */
   position: relative;
   z-index: 500;
   justify-content: flex-start;
