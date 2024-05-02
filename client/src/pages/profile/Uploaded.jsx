@@ -87,7 +87,7 @@ const Uploaded = ({ _id, img, userProfile }) => {
   };
 
   return (
-    <Box>
+    <Box sx={{ width: "100%"}}>
       <Typography variant="h6" color="secondary">
         Your Profile Details
       </Typography>

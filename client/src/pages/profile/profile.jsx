@@ -134,6 +134,7 @@ const Profile = () => {
       sx={{
         flexGrow: 1,
         p: 3,
+        width: "100%",
       }}
     >
       <Toolbar />

@@ -168,7 +168,10 @@ const Navbar = () => {
               </IconButton>
 
               <Toolbar sx={{ flexGrow: 1 }} />
-              <Typography color="primary">Rasta & Friends</Typography>
+              <IconButton onClick={() => navigate("/")}>
+                <Typography color="primary">Rasta & Friends</Typography>
+              </IconButton>
+
               <Toolbar sx={{ flexGrow: 1 }} />
             </>
           )}
