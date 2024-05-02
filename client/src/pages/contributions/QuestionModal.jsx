@@ -25,6 +25,7 @@ import { updatePosts } from "../../redux/posts";
 import { purgeContext } from "../../context/purge";
 
 const QuestionModal = ({ modalOpen, setModalOpen }) => {
+  axios.defaults.withCredentials = true;
   const { viewportWidth } = useContext(purgeContext);
   const details = useSelector((state) => state.user.details);
   const dispatch = useDispatch();

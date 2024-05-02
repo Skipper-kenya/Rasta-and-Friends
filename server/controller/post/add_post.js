@@ -9,7 +9,9 @@ const controlAddPost = async (req, res) => {
 
   const image = {
     name: filename,
-    data: fs.readFileSync(path.join(__dirname + "/uploads/" + filename)),
+    data: filename
+      ? fs.readFileSync(path.join(__dirname + "/uploads/" + filename))
+      : null,
     ContentType: req.file?.mimetype,
   };
 

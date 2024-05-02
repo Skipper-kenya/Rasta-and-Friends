@@ -39,14 +39,14 @@ const Post = () => {
   const currentPost = posts?.filter((post) => post._id === params?.id);
 
   useEffect(() => {
-    const dat = currentPost[0].image.data.data;
-    const imageData = [...dat];
+    const dat = currentPost[0]?.image?.data?.data || null;
+    const imageData = dat ? [...dat] : null;
     const uint8Array = new Uint8Array(imageData);
     const blob = new Blob([uint8Array], { type: "image/jpeg" });
     const imageUrl = URL.createObjectURL(blob);
-    setUrl(imageUrl);
-  }, []);
 
+    dat ? setUrl(imageUrl) : setUrl(null);
+  }, []);
 
   const handleSubmitAnswer = async () => {
     if (answer) {
