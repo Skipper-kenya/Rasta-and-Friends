@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/home/dashboard";
@@ -6,11 +6,12 @@ import Register from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
 import { Toaster } from "sonner";
 import ProtectedRoute from "./components/secure/protectedRoute.jsx";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Spin } from "antd";
 import { CssBaseline, createTheme } from "@mui/material";
 import PurgeProvider from "./context/purge.jsx";
 import NotFound from "./components/NotFound.jsx";
+import { hideLoading } from "./redux/loading.jsx";
 
 const LazyProfile = React.lazy(() => import("./pages/profile/profile.jsx"));
 const LazyContributions = React.lazy(() =>
@@ -21,6 +22,11 @@ const LazyPost = React.lazy(() => import("./pages/contributions/Post.jsx"));
 
 function App() {
   axios.defaults.withCredentials = true;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(hideLoading());
+  }, []);
 
   const loading = useSelector((state) => state.loading.loading);
 
@@ -29,7 +35,7 @@ function App() {
       <PurgeProvider>
         <CssBaseline />
         <Toaster richColors position="top-center" />
-        {/* <Spin spinning={loading} fullscreen /> */}
+        <Spin spinning={loading} fullscreen />
         <Routes>
           <Route
             path="/"
