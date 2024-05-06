@@ -25,7 +25,6 @@ const profileSchema = new mongoose.Schema(
       name: String,
       ContentType: String,
     },
-
     profileOwner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "users",

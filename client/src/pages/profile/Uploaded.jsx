@@ -37,7 +37,7 @@ const Uploaded = ({ _id, img, userProfile }) => {
   const [title, setTitle] = useState("");
   const [editContent, setEditContent] = useState("");
   const [url, setUrl] = useState(null);
-  //
+
   const getProfilePic = async () => {
     const response = await axios.get(
       `${import.meta.env.VITE_API_GETPROFILEPIC}/${userProfile._id}`
@@ -87,7 +87,7 @@ const Uploaded = ({ _id, img, userProfile }) => {
   };
 
   return (
-    <Box sx={{ width: "100%"}}>
+    <Box sx={{ width: "100%" }}>
       <Typography variant="h6" color="secondary">
         Your Profile Details
       </Typography>
@@ -136,6 +136,7 @@ const Uploaded = ({ _id, img, userProfile }) => {
           <CreateCard
             title="image"
             subheader="Your profile image"
+            userProfile={userProfile}
             content={userProfile.name}
             url={url}
             image={img}
@@ -171,7 +172,15 @@ const Uploaded = ({ _id, img, userProfile }) => {
   );
 };
 
-const CreateCard = ({ title, subheader, content, image, handleEdit, url }) => {
+const CreateCard = ({
+  title,
+  subheader,
+  content,
+  image,
+  handleEdit,
+  url,
+  userProfile,
+}) => {
   return (
     <div>
       <Card>
