@@ -29,7 +29,7 @@ function App() {
       <PurgeProvider>
         <CssBaseline />
         <Toaster richColors position="top-center" />
-        <Spin spinning={loading} fullscreen />
+        {/* <Spin spinning={loading} fullscreen /> */}
         <Routes>
           <Route
             path="/"
