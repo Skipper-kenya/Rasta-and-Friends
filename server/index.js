@@ -13,6 +13,7 @@ const passport = require("passport");
 const controlLogin = require("./controller/auth/login.js");
 const profileRoute = require("./routes/profile.js");
 const projectsRoute = require("./routes/projects.js");
+
 const notificationsRoute = require("./routes/notifications.js");
 const postsRoute = require("./routes/posts.js");
 
